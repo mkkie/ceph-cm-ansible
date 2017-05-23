@@ -43,12 +43,6 @@
   register: add_user_xattr
   when: modify_fstab == true
 
-- name: Enable xattr for this boot.
-  command:
-    mount -o remount,user_xattr /
-  when: add_user_xattr is defined and
-        add_user_xattr|changed
-
 - name: Ensure fuse group exists.
   group:
     name: fuse
